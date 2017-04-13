@@ -1,23 +1,23 @@
 # Notibday
 
-**Notibday** viene de **Noti**fication of **B**irth**day**.
+**Notibday** comes from **Noti**fication of **B**irth**day**.
 
-Permite enviar notificaciones vía `#Telegram` a un usuario en concreto de los cumpleaños de cada día, según los contactos guardados en `Gmail`.
+It allows you to send notifications via `#Telegram` to a concrete user with information about the birthdays of the contacts you have stores in `Gmail`.
 
-## Configuración
+## Configuration
 
 ```console
 $> cp config.py.example config.example
 ```
 
-Establecer los valores correspondientes.
+Set the corresponding values in the file.
 
 ### Gcalcli
 
-Para que funcione correctamente, se debe tener instalado el comando [gcalcli](https://github.com/insanum/gcalcli) y configurado correctamente. Cuando se configura, se crea un fichero `~/.gcalcli_oauth` con las credenciales de acceso a los calendarios de Google del usuario.
+In order to run properly the code, you must install the command [gcalcli](https://github.com/insanum/gcalcli) and configure it in a right way. When it is configured you will get a file `~/.gcalcli_oauth` with the access credentials to all your Google calendars.
 
 ### Bot de Telegram
 
-También será necesario crear un **bot de Telegram** utilizando [BotFather](https://telegram.me/BotFather). Se te asignará un identificador del bot, que tendrás que utilizar en el fichero de configuración.
+It will be also necessary to create a **Telegram Bot** using [BotFather](https://telegram.me/BotFather). You will get an identifier (*token*) for your bot. Write this token into de configuration file.
 
-También necesitarás tu **identificador de usario** de Telegram para que los mensajes sólo te lleguen a ti. Para ello, puedes hacer uso de [este bot](https://telegram.me/get_id_bot).
+You will need a **user identifier** of Telegram in order to the messages be delivered only to you. You can use [this bot](https://telegram.me/get_id_bot).
