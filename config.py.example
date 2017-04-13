@@ -1,0 +1,10 @@
+PROD_SERVER = {
+    "NAME": "xxxxxxxxxxx",
+    "VENV": "xxxxxxxxxxx",
+    "PROJ": "xxxxxxxxxxx",
+    "BASH": "xxxxxxxxxxx"
+}
+TELEGRAM = {
+    "BOT_TOKEN": "xxxxxxxxxxx",
+    "USER_ID": "xxxxxxxxxxx"
+}
