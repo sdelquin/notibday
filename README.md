@@ -21,3 +21,12 @@ In order to run properly the code, you must install the command [gcalcli](https:
 It will be also necessary to create a **Telegram Bot** using [BotFather](https://telegram.me/BotFather). You will get an identifier (*token*) for your bot. Write this token into de configuration file.
 
 You will need a **user identifier** of Telegram in order to the messages be delivered only to you. You can use [this bot](https://telegram.me/get_id_bot).
+
+### Cron
+
+Obviously you can run the project when you want, but in my case, I have set up the running of the program twice a day with `crontab`:
+
+```console
+30 7 * * * /path/to/your/run.sh
+0 17 * * * /path/to/your/run.sh
+```
