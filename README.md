@@ -2,7 +2,7 @@
 
 **Notibday** comes from **Noti**fication of **B**irth**day**.
 
-It allows you to send notifications via `#Telegram` to a concrete user with information about the birthdays of the contacts you have stores in `Gmail`.
+It allows you to send notifications via `#Telegram` to a concrete user with information about the birthdays of the contacts you have stored in `Gmail`.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ Set the corresponding values in the file.
 
 In order to run properly the code, you must install the command [gcalcli](https://github.com/insanum/gcalcli) and configure it in a right way. When it is configured you will get a file `~/.gcalcli_oauth` with the access credentials to all your Google calendars.
 
-### Bot de Telegram
+### Telegram Bot
 
 It will be also necessary to create a **Telegram Bot** using [BotFather](https://telegram.me/BotFather). You will get an identifier (*token*) for your bot. Write this token into de configuration file.
 
