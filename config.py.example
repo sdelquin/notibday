@@ -1,10 +1,10 @@
 PROD_SERVER = {
-    "NAME": "xxxxxxxxxxx",
-    "VENV": "xxxxxxxxxxx",
-    "PROJ": "xxxxxxxxxxx",
-    "BASH": "xxxxxxxxxxx"
+    "NAME": "xxxxxxxxxxx",  # name or ip address of production server
+    "VENV": "xxxxxxxxxxx",  # absolute path to the virtualenv
+    "PROJ": "xxxxxxxxxxx",  # absolute path to the project
+    "BASH": "xxxxxxxxxxx"   # absolute path to .bashrc file
 }
 TELEGRAM = {
-    "BOT_TOKEN": "xxxxxxxxxxx",
-    "USER_ID": "xxxxxxxxxxx"
+    "BOT_TOKEN": "xxxxxxxxxxx",  # identificador del bot creado
+    "USER_ID": "xxxxxxxxxxx"     # identificador de usuario de telegram
 }
