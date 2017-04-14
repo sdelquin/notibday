@@ -12,6 +12,18 @@ $> cp config.py.example config.example
 
 Set the corresponding values in the file.
 
+### Virtualenv
+
+The program expects to have the virtualenv installed in `~/.virtualenvs/notibday`.
+
+### Project directory (production)
+
+The program expects to have the project deployed in `~/notibday`.
+
+### Server name (production)
+
+The program expects to have the name of the production server as `production`. You can change it in `/etc/hosts`.
+
 ### Gcalcli
 
 In order to run properly the code, you must install the command [gcalcli](https://github.com/insanum/gcalcli) and configure it in a right way. When it is configured you will get a file `~/.gcalcli_oauth` with the access credentials to all your Google calendars.
@@ -27,6 +39,6 @@ You will need a **user identifier** of Telegram in order to the messages be deli
 Obviously you can run the project when you want, but in my case, I have set up the running of the program twice a day with `crontab`:
 
 ```console
-30 7 * * * /path/to/your/run.sh
-0 17 * * * /path/to/your/run.sh
+30 7 * * * ~/notibday/run.sh
+0 17 * * * ~/notibday/run.sh
 ```

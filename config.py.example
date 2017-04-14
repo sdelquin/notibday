@@ -1,9 +1,3 @@
-PROD_SERVER = {
-    "NAME": "xxxxxxxxxxx",  # name or ip address of production server
-    "VENV": "xxxxxxxxxxx",  # absolute path to the virtualenv
-    "PROJ": "xxxxxxxxxxx",  # absolute path to the project
-    "BASH": "xxxxxxxxxxx"   # absolute path to .bashrc file
-}
 TELEGRAM = {
     "BOT_TOKEN": "xxxxxxxxxxx",  # token of the new created bot
     "USER_ID": "xxxxxxxxxxx"     # your user identifier in telegram
