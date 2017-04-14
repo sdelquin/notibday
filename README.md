@@ -28,6 +28,8 @@ The program expects to have the name of the production server as `production`. Y
 
 In order to run properly the code, you must install the command [gcalcli](https://github.com/insanum/gcalcli) and configure it in a right way. When it is configured you will get a file `~/.gcalcli_oauth` with the access credentials to all your Google calendars.
 
+`gcalcli` should be on the PATH in order to be executed properly.
+
 ### Telegram Bot
 
 It will be also necessary to create a **Telegram Bot** using [BotFather](https://telegram.me/BotFather). You will get an identifier (*token*) for your bot. Write this token into de configuration file.

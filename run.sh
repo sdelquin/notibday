@@ -1,6 +1,5 @@
 #!/bin/bash
 # Master script.
-# To be launched only in production machine.
 
 cd "$(dirname "$0")"
 source ~/.bashrc
