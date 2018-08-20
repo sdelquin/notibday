@@ -1,4 +1,0 @@
-TELEGRAM = {
-    "BOT_TOKEN": "xxxxxxxxxxx",  # token of the new created bot
-    "USER_ID": "xxxxxxxxxxx"     # your user identifier in telegram
-}

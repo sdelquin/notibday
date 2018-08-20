@@ -4,25 +4,19 @@
 
 It allows you to send notifications via `#Telegram` to a concrete user with information about the birthdays of the contacts you have stored in `Gmail`.
 
-## Configuration
+## Development
 
 ```console
-$> cp config.py.example config.example
+$ pipenv install
+$ vi .env    # set the corresponing values
+...
 ```
 
-Set the corresponding values in the file.
+Launch the app:
 
-### Virtualenv
-
-The program expects to have the virtualenv installed in `~/.virtualenvs/notibday`.
-
-### Project directory (production)
-
-The program expects to have the project deployed in `~/notibday`.
-
-### Server name (production)
-
-The program expects to have the name of the production server as `production`. You can change it in `/etc/hosts`.
+~~~console
+$ pipenv run python main.py
+~~~
 
 ### Gcalcli
 
