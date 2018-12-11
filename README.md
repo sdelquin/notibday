@@ -18,6 +18,12 @@ Launch the app:
 $ pipenv run python main.py
 ~~~
 
+### VIP file
+
+When obtaining next birthdays a `vip.dat` file can be filled in with those *very important people* who we want to be aware of their birthdays from.
+
+The structure of this file is as simple as writing the **whole name (and surname)** of the person at each line.
+
 ### Telegram Bot
 
 It will be also necessary to create a **Telegram Bot** using [BotFather](https://telegram.me/BotFather). You will get an identifier (*token*) for your bot. Write this token into de configuration file.

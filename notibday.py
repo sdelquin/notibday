@@ -2,6 +2,7 @@ import datetime
 import os
 import re
 
+import config
 from gcal import GCal
 from tg import send_message
 
@@ -39,7 +40,12 @@ class NotiBday:
             msg = os.linesep.join(buf)
             send_message(msg)
 
-    def _get_birthdays_at_delta(self, delta, caption):
+    def _get_birthdays_at_delta(self, delta, caption, use_vip=True):
+        try:
+            with open(config.VIP_FILE) as f:
+                vips = [line.strip() for line in f.readlines()]
+        except FileNotFoundError:
+            use_vip = False
         start_date = datetime.datetime.utcnow().replace(
             hour=0, minute=0, second=0, microsecond=0)
         start_date += datetime.timedelta(days=delta)
@@ -47,12 +53,14 @@ class NotiBday:
         events = self.calendar.get_events(
             start_date=start_date, end_date=end_date)
         if events:
-            buf = [caption]
+            buf = []
             for event in sorted(events, key=lambda t: t[1]):
                 name, date = NotiBday.parse_bday_event(event)
-                if name:
+                if name and ((not use_vip) or (use_vip and name in vips)):
                     date = date.strftime("%-d/%-m")
                     buf.append(f'🎈 *{name}* ({date})')
+            if buf:
+                buf.insert(0, caption)
             msg = os.linesep.join(buf)
         else:
             msg = ''
