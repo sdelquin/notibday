@@ -26,11 +26,7 @@ class NotiBday:
         return name, date
 
     def notify_today_birthdays(self):
-        start_date = datetime.datetime.utcnow().replace(
-            hour=0, minute=0, second=0, microsecond=0)
-        end_date = start_date + datetime.timedelta(days=1)
-        events = self.calendar.get_events(
-            start_date=start_date, end_date=end_date)
+        events = self.calendar.get_events()
         if events:
             buf = ['Hoy es el cumpleaños de:']
             for event in sorted(events, key=lambda t: t[1]):
@@ -46,12 +42,7 @@ class NotiBday:
                 vips = [line.strip() for line in f.readlines()]
         except FileNotFoundError:
             use_vip = False
-        start_date = datetime.datetime.utcnow().replace(
-            hour=0, minute=0, second=0, microsecond=0)
-        start_date += datetime.timedelta(days=delta)
-        end_date = start_date + datetime.timedelta(days=1)
-        events = self.calendar.get_events(
-            start_date=start_date, end_date=end_date)
+        events = self.calendar.get_events(delta=delta)
         if events:
             buf = []
             for event in sorted(events, key=lambda t: t[1]):

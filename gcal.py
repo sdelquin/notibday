@@ -18,16 +18,25 @@ class GCal:
         self.service = build('calendar', 'v3', http=creds.authorize(Http()))
         self.calendar_id = calendar_id
 
-    def get_events(self,
-                   start_date=datetime.datetime.utcnow(),
-                   end_date=datetime.datetime.utcnow()):
-        start_date = start_date.isoformat() + 'Z'
-        end_date = end_date.isoformat() + 'Z'
+    def get_events(self, start_datetime=None, end_datetime=None, delta=None):
+        if not start_datetime:
+            # midday
+            start_datetime = datetime.datetime.utcnow().replace(
+                hour=12, minute=0, second=0)
+        if not end_datetime:
+            end_datetime = start_datetime + datetime.timedelta(seconds=1)
+
+        if delta:
+            start_datetime = start_datetime + datetime.timedelta(days=delta)
+            end_datetime = end_datetime + datetime.timedelta(days=delta)
+
+        start = start_datetime.isoformat() + 'Z'
+        end = end_datetime.isoformat() + 'Z'
 
         events_result = self.service.events().list(
             calendarId=self.calendar_id,
-            timeMin=start_date,
-            timeMax=end_date,
+            timeMin=start,
+            timeMax=end,
             singleEvents=True,
             orderBy='startTime').execute()
         events = events_result.get('items', [])
