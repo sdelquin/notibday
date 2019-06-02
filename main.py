@@ -8,7 +8,6 @@ Options:
 '''
 from docopt import docopt
 
-import config
 from notibday import NotiBday
 
 
