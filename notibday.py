@@ -4,6 +4,7 @@ import re
 
 import config
 from gcal import GCal
+from gcontacts import GContacts
 from tg import send_message
 
 NEXT_BIRTHDAYS = ((7, 'Falta *1 semana* para el cumpleaños de:'),
@@ -12,8 +13,10 @@ NEXT_BIRTHDAYS = ((7, 'Falta *1 semana* para el cumpleaños de:'),
 
 
 class NotiBday:
-    def __init__(self, calendar_id):
-        self.calendar = GCal(calendar_id)
+    def __init__(self):
+        self.calendar = GCal(config.CONTACTS_CAL_ID)
+        self.agenda = GContacts()
+        self.agenda.retrieve_contacts()
 
     @staticmethod
     def parse_bday_event(event):
@@ -32,7 +35,8 @@ class NotiBday:
             for event in sorted(events, key=lambda t: t[1]):
                 name, _ = NotiBday.parse_bday_event(event)
                 if name:
-                    buf.append(f'🎂 *{name}*')
+                    age = self.agenda.get_contact_age(name)
+                    buf.append(f'🎂 *{name}* ({age})')
             msg = os.linesep.join(buf)
             send_message(msg)
 
@@ -49,7 +53,8 @@ class NotiBday:
                 name, date = NotiBday.parse_bday_event(event)
                 if name and ((not use_vip) or (use_vip and name in vips)):
                     date = date.strftime("%-d/%-m")
-                    buf.append(f'🎈 *{name}* ({date})')
+                    age = self.agenda.get_contact_age(name)
+                    buf.append(f'🎈 *{name}* ({date}) _{age} años_')
             if buf:
                 buf.insert(0, caption)
             msg = os.linesep.join(buf)
