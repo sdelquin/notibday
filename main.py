@@ -14,7 +14,7 @@ from notibday import NotiBday
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
-    postman = NotiBday(config.CONTACTS_CAL_ID)
+    postman = NotiBday()
     if arguments['--today']:
         postman.notify_today_birthdays()
     elif arguments['--next']:
