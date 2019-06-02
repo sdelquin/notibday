@@ -4,8 +4,7 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import client, file, tools
 
-# If modifying these scopes, delete the file token.json.
-SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
+import config
 
 
 class GCal:
@@ -13,7 +12,8 @@ class GCal:
         store = file.Storage('token.json')
         creds = store.get()
         if not creds or creds.invalid:
-            flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+            flow = client.flow_from_clientsecrets('credentials.json',
+                                                  config.GOOGLE_API_SCOPES)
             creds = tools.run_flow(flow, store)
         self.service = build('calendar', 'v3', http=creds.authorize(Http()))
         self.calendar_id = calendar_id
