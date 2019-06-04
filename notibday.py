@@ -54,7 +54,7 @@ class NotiBday:
                 if name and ((not use_vip) or (use_vip and name in vips)):
                     date = date.strftime("%-d/%-m")
                     age = self.agenda.get_contact_age(name)
-                    buf.append(f'🎈 *{name}* ({date}) _{age} años_')
+                    buf.append(f'🎈 *{name}* ({date}) {age}')
             if buf:
                 buf.insert(0, caption)
             msg = os.linesep.join(buf)
