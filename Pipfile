@@ -7,15 +7,14 @@ name = "pypi"
 python-telegram-bot = "*"
 prettyconf = "*"
 google-api-python-client = "*"
-"oauth2client" = "*"
+oauth2client = "*"
 docopt = "*"
 
 [dev-packages]
-ipython = "*"
-"flake8" = "*"
+flake8 = "*"
 rope = "*"
-"fabric3" = "*"
 yapf = "*"
+fabric3 = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
