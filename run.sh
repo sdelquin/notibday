@@ -1,5 +1,6 @@
 #!/bin/bash
 # Master script.
 
+source ~/.virtualenvs/notibday/bin/activate
 cd "$(dirname "$0")"
-exec pipenv run python main.py $1
+exec python main.py $1

@@ -1,10 +1,11 @@
-from fabric.api import env, local, cd, run
+from fabric.api import env, local, cd, run, prefix
 
-env.hosts = ['production']
+env.hosts = ['cloud']
 
 
 def deploy():
     local('git push')
-    with cd('~/notibday'):
-        run('git pull')
-        run('pipenv install')
+    with prefix('source ~/.virtualenvs/notibday/bin/activate'):
+        with cd('~/code/notibday'):
+            run('git pull')
+            run('pip install -r requirements.txt')
