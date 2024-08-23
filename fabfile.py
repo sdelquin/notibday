@@ -1,11 +1,11 @@
-from fabric.api import env, local, cd, run, prefix
+from fabric.api import cd, env, local, prefix, run
 
 env.hosts = ['sdelquin.me']
 
 
 def deploy():
     local('git push')
-    with prefix('source ~/.pyenv/versions/notibday/bin/activate'):
-        with cd('~/code/notibday'):
+    with cd('~/code/notibday'):
+        with prefix('.venv/bin/activate'):
             run('git pull')
             run('pip install -r requirements.txt')

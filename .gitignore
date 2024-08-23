@@ -1,3 +1,4 @@
+.venv
 *.pyc
 .vscode
 .env
@@ -5,4 +6,3 @@ credentials.json
 token.json
 vip.dat
 .DS_Store
-.python-version

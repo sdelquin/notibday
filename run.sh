@@ -1,6 +1,6 @@
 #!/bin/bash
 # Master script.
 
-source ~/.pyenv/versions/notibday/bin/activate
 cd "$(dirname "$0")"
+source .venv/bin/activate
 exec python main.py $1
