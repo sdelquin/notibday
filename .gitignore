@@ -6,3 +6,4 @@ credentials.json
 token.json
 vip.dat
 .DS_Store
+*.log

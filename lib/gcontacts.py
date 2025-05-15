@@ -4,7 +4,7 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import client, file, tools
 
-import config
+import settings
 
 
 class GContacts:
@@ -12,16 +12,21 @@ class GContacts:
         store = file.Storage('token.json')
         creds = store.get()
         if not creds or creds.invalid:
-            flow = client.flow_from_clientsecrets('credentials.json',
-                                                  config.GOOGLE_API_SCOPES)
+            flow = client.flow_from_clientsecrets('credentials.json', settings.GOOGLE_API_SCOPES)
             creds = tools.run_flow(flow, store)
         self.service = build('people', 'v1', http=creds.authorize(Http()))
 
     def retrieve_contacts(self):
-        data = self.service.people().connections().list(
-            resourceName='people/me',
-            pageSize=2000,
-            personFields='names,birthdays,emailAddresses').execute()
+        data = (
+            self.service.people()
+            .connections()
+            .list(
+                resourceName='people/me',
+                pageSize=2000,
+                personFields='names,birthdays,emailAddresses',
+            )
+            .execute()
+        )
 
         self.contacts = {}
         for contact in data['connections']:

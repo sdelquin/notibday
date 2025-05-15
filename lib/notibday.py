@@ -4,9 +4,9 @@ import re
 
 from telegramtk import send_message
 
-import config
-from gcal import GCal
-from gcontacts import GContacts
+import settings
+from lib.gcal import GCal
+from lib.gcontacts import GContacts
 
 NEXT_BIRTHDAYS = (
     (7, 'Falta *1 semana* para el cumpleaños de:'),
@@ -17,7 +17,7 @@ NEXT_BIRTHDAYS = (
 
 class NotiBday:
     def __init__(self):
-        self.calendar = GCal(config.CONTACTS_CAL_ID)
+        self.calendar = GCal(settings.CONTACTS_CAL_ID)
         self.agenda = GContacts()
         self.agenda.retrieve_contacts()
 
@@ -45,7 +45,7 @@ class NotiBday:
 
     def _get_birthdays_at_delta(self, delta, caption, use_vip=True):
         try:
-            with open(config.VIP_FILE) as f:
+            with open(settings.VIP_FILE) as f:
                 vips = [line.strip() for line in f.readlines()]
         except FileNotFoundError:
             use_vip = False
@@ -74,4 +74,4 @@ class NotiBday:
                 buf.append(2 * os.linesep)
         if buf:
             msg = ''.join(buf)
-            send_message(config.TELEGRAM_USER_ID, msg)
+            send_message(settings.TELEGRAM_USER_ID, msg)

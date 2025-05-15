@@ -9,7 +9,7 @@ Options:
 
 from docopt import docopt
 
-from notibday import NotiBday
+from lib.notibday import NotiBday
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
