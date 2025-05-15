@@ -2,14 +2,17 @@ import datetime
 import os
 import re
 
+from telegramtk import send_message
+
 import config
 from gcal import GCal
 from gcontacts import GContacts
-from tg import send_message
 
-NEXT_BIRTHDAYS = ((7, 'Falta *1 semana* para el cumpleaños de:'),
-                  (15, 'Faltan *15 días* para el cumpleaños de:'),
-                  (31, 'Falta *1 mes* para el cumpleaños de:'))
+NEXT_BIRTHDAYS = (
+    (7, 'Falta *1 semana* para el cumpleaños de:'),
+    (15, 'Faltan *15 días* para el cumpleaños de:'),
+    (31, 'Falta *1 mes* para el cumpleaños de:'),
+)
 
 
 class NotiBday:
@@ -52,9 +55,9 @@ class NotiBday:
             for event in sorted(events, key=lambda t: t[1]):
                 name, date = NotiBday.parse_bday_event(event)
                 if name and ((not use_vip) or (use_vip and name in vips)):
-                    date = date.strftime("%-d/%-m")
+                    date = date.strftime('%-d/%-m')
                     age = self.agenda.get_contact_age(name)
-                    buf.append(f'🎈 *{name}* ({date}) {age}')
+                    buf.append(rf'🎈 *{name}* \({date}\) {age}')
             if buf:
                 buf.insert(0, caption)
             msg = os.linesep.join(buf)
@@ -70,4 +73,5 @@ class NotiBday:
                 buf.append(birthdays)
                 buf.append(2 * os.linesep)
         if buf:
-            send_message(''.join(buf))
+            msg = ''.join(buf)
+            send_message(config.TELEGRAM_USER_ID, msg)

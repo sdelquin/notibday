@@ -1,15 +1,15 @@
-'''
+"""
 Usage:
     main.py [options]
 
 Options:
     -t --today    Send TODAY birthdays
     -n --next     Send NEXT birthdays
-'''
+"""
+
 from docopt import docopt
 
 from notibday import NotiBday
-
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
