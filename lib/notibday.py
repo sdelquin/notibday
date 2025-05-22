@@ -39,9 +39,9 @@ class NotiBday:
                 name, _ = NotiBday.parse_bday_event(event)
                 if name:
                     age = self.agenda.get_contact_age(name)
-                    buf.append(f'🎂 *{name}* ({age})')
+                    buf.append(rf'🎂 *{name}* \({age}\)')
             msg = os.linesep.join(buf)
-            send_message(msg)
+            send_message(settings.TELEGRAM_USER_ID, msg)
 
     def _get_birthdays_at_delta(self, delta, caption, use_vip=True):
         try:
